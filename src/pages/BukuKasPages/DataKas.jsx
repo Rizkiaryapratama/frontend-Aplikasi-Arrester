@@ -41,7 +41,7 @@ const DataKas = () => {
       ),
       field: "tanggal",
       headerName: "Tanggal",
-      type: "date",
+      type: "Date",
       flex: 0.8,
       headerAlign: "left",
       align: "left",

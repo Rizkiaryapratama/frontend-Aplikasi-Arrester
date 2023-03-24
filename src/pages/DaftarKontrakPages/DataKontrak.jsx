@@ -40,7 +40,7 @@ const DataKontrak = () => {
       ),
       field: "tgl_kontrak",
       headerName: "Tanggal",
-      type: "date",
+      type: "Date",
       flex: 0.5,
       headerAlign: "left",
       align: "left",

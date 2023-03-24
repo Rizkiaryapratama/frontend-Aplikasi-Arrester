@@ -693,7 +693,7 @@ const Dashboard = () => {
               p="5px 10px"
               borderRadius="4px"
             >
-              {`${changeSign}${percentageMitra}%`}
+              {`${changeSign}${percentageUpp}%`}
             </Box>
           </Box>
 

@@ -13,9 +13,6 @@ const InputKontrak = () => {
   const [nama_pekerjaan, setNamaPekerjaan] = useState("");
   const [nilai_kontrak, setNilaiKontrak] = useState("");
   const [dpp, setDpp] = useState("");
-  // const [ppn, setPpn] = useState("");
-  // const [pph, setPph] = useState("");
-  const [netto_akhir, setNettoAkhir] = useState("");
   const [modal, setModal] = useState("");
   const [profit, setProfit] = useState("");
   const [total_upp, setTotalUpp] = useState("");

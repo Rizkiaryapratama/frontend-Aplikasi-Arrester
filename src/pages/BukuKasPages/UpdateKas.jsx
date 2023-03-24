@@ -17,7 +17,7 @@ const UpdateKas = () => {
   const [new_in, setNewIn] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
-  const [kas, setKas] = useState([]);
+  const [kas] = useState([]);
 
   useEffect(() => {
     getKas();

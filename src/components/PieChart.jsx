@@ -1,9 +1,7 @@
 import { ResponsivePie } from "@nivo/pie";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
-import { mockPieData as data } from "../data/mockData";
 import { useState, useEffect } from "react";
-// import { getKontrak } from "../api/api
 
 const PieChart = () => {
   const theme = useTheme();

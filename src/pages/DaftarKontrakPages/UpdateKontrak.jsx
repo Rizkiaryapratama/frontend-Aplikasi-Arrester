@@ -13,9 +13,6 @@ const UpdateKontrak = () => {
   const [nama_pekerjaan, setNamaPekerjaan] = useState("");
   const [nilai_kontrak, setNilaiKontrak] = useState("");
   const [dpp, setDpp] = useState("");
-  const [ppn, setPpn] = useState("");
-  const [pph, setPph] = useState("");
-  const [netto_akhir, setNettoAkhir] = useState("");
   const [modal, setModal] = useState("");
   const [profit, setProfit] = useState("");
   const [total_upp, setTotalUpp] = useState("");
@@ -74,10 +71,9 @@ const UpdateKontrak = () => {
   return (
     <Box m="20px">
       <Header
-        title="Data Beban Usaha"
-        subtitle="Halaman Update Data Beban Usaha"
+        title="Data Kontrak Pekerjaan"
+        subtitle="Form Update Data Kontrak Kerja Koperasi Arrester"
       />
-
       <Formik>
         {({ errors, touched, handleBlur, handleSubmit }) => (
           <form onSubmit={(handleSubmit, updateKontrak)}>

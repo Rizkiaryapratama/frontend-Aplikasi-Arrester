@@ -4,7 +4,6 @@ import { tokens } from "../theme";
 import { useState, useEffect } from "react";
 import { getKontrak } from "../api/api";
 import moment from "moment";
-import { NumericFormat } from "react-number-format";
 
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
