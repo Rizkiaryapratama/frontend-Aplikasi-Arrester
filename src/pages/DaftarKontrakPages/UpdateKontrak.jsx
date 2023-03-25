@@ -99,6 +99,7 @@ const UpdateKontrak = () => {
                 error={!!touched.tgl_kontrak && !!errors.tgl_kontrak}
                 helperText={touched.tgl_kontrak && errors.tgl_kontrak}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Nomor Kontrak
@@ -115,6 +116,7 @@ const UpdateKontrak = () => {
                 error={!!touched.nomor_kontrak && !!errors.nomor_kontrak}
                 helperText={touched.nomor_kontrak && errors.nomor_kontrak}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Nama Pekerjaan
@@ -131,6 +133,7 @@ const UpdateKontrak = () => {
                 error={!!touched.nama_pekerjaan && !!errors.nama_pekerjaan}
                 helperText={touched.nama_pekerjaan && errors.nama_pekerjaan}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Nilai Kontrak
@@ -147,6 +150,7 @@ const UpdateKontrak = () => {
                 error={!!touched.nilai_kontrak && !!errors.nilai_kontrak}
                 helperText={touched.nilai_kontrak && errors.nilai_kontrak}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Dpp
@@ -163,23 +167,8 @@ const UpdateKontrak = () => {
                 error={!!touched.dpp && !!errors.dpp}
                 helperText={touched.dpp && errors.dpp}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
-              {/* <FormLabel sx={{ gridColumn: "span 3" }} className="label">
-                Netto Akhir
-              </FormLabel>
-              <TextField
-                fullWidth
-                variant="filled"
-                type="number"
-                label="Netto Akhir"
-                onBlur={handleBlur}
-                onChange={(e) => setNettoAkhir(e.target.value)}
-                value={netto_akhir}
-                name="netto_akhir"
-                error={!!touched.netto_akhir && !!errors.netto_akhir}
-                helperText={touched.netto_akhir && errors.netto_akhir}
-                sx={{ gridColumn: "span 4" }}
-              /> */}
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Modal
               </FormLabel>
@@ -195,6 +184,7 @@ const UpdateKontrak = () => {
                 error={!!touched.modal && !!errors.modal}
                 helperText={touched.modal && errors.modal}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Profit Mitra
@@ -211,6 +201,7 @@ const UpdateKontrak = () => {
                 error={!!touched.profit && !!errors.profit}
                 helperText={touched.profit && errors.profit}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Total Upp
@@ -227,6 +218,7 @@ const UpdateKontrak = () => {
                 error={!!touched.total_upp && !!errors.total_upp}
                 helperText={touched.total_upp && errors.total_upp}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Laba Rugi
@@ -243,11 +235,12 @@ const UpdateKontrak = () => {
                 error={!!touched.laba_rugi && !!errors.laba_rugi}
                 helperText={touched.laba_rugi && errors.laba_rugi}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
-                Simpan Data
+                Update Data
               </Button>
             </Box>
           </form>

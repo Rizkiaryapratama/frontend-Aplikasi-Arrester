@@ -94,6 +94,7 @@ const UpdateKas = () => {
                 error={!!touched.tanggal && !!errors.tanggal}
                 helperText={touched.tanggal && errors.tanggal}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Vendor
@@ -110,6 +111,7 @@ const UpdateKas = () => {
                 error={!!touched.vendor && !!errors.vendor}
                 helperText={touched.vendor && errors.vendor}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Keterangan
@@ -126,6 +128,7 @@ const UpdateKas = () => {
                 error={!!touched.keterangan && !!errors.keterangan}
                 helperText={touched.keterangan && errors.keterangan}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Pekerjaan
@@ -142,6 +145,7 @@ const UpdateKas = () => {
                 error={!!touched.pekerjaan && !!errors.pekerjaan}
                 helperText={touched.pekerjaan && errors.pekerjaan}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 In
@@ -158,6 +162,7 @@ const UpdateKas = () => {
                 error={!!touched.new_in && !!errors.new_in}
                 helperText={touched.new_in && errors.new_in}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Out
@@ -174,6 +179,7 @@ const UpdateKas = () => {
                 error={!!touched.out && !!errors.out}
                 helperText={touched.out && errors.out}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               />
               <FormLabel sx={{ gridColumn: "span 3" }} className="label">
                 Saldo
@@ -189,6 +195,7 @@ const UpdateKas = () => {
                 error={!!touched.inn && !!errors.inn}
                 helperText={touched.inn && errors.inn}
                 sx={{ gridColumn: "span 4" }}
+                required={true}
               >
                 {/* check if kas array is empty or last element doesn't have totalSaldo */}
                 {kas.length === 0 ||
@@ -203,6 +210,7 @@ const UpdateKas = () => {
                       onClick={(e) => e.stopPropagation()} // Add this line
                       error={!!touched.inn && !!errors.inn}
                       helperText={touched.inn && errors.inn}
+                      required={true}
                     />
                   </MenuItem>
                 ) : (

@@ -14,11 +14,13 @@ import { useState, useEffect } from "react";
 import { getKas, getKontrak } from "../../api/api";
 import Moment from "react-moment";
 import { NumericFormat } from "react-number-format";
+import { CircularProgress } from "@mui/material";
 
 const Dashboard = () => {
   //bridge to backend
   const [kas, setKas] = useState([]);
   const [kontrak, setKontrak] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     fetchKas();
     fetchKontrak();
@@ -27,14 +29,34 @@ const Dashboard = () => {
 
   //get kas api
   const fetchKas = async () => {
+    setIsLoading(true); // Set isLoading to true before fetching data
     const data = await getKas();
     setKas(data);
+    setIsLoading(false); // Set isLoading to false after fetching data
   };
+
   //get kontrak api
   const fetchKontrak = async () => {
+    setIsLoading(true); // Set isLoading to true before fetching data
     const data = await getKontrak();
     setKontrak(data);
+    setIsLoading(false); // Set isLoading to false after fetching data
   };
+
+  if (isLoading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "75vh",
+        }}
+      >
+        <CircularProgress color="secondary" size={64} />
+      </Box>
+    );
+  }
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -48,16 +70,21 @@ const Dashboard = () => {
   const totalSaldo2 = kas
     .slice(0, -1)
     .reduce((total, currentKas) => (total = total + currentKas.new_in), 0);
-  const percentageTotalSaldo = ((totalSaldo - totalSaldo2)/totalSaldo*100).toFixed(2);
-  const barTotalSaldo = percentageTotalSaldo/100;
+  const percentageTotalSaldo = (
+    ((totalSaldo - totalSaldo2) / totalSaldo) *
+    100
+  ).toFixed(2);
+  const barTotalSaldo = percentageTotalSaldo / 100;
 
   //Vendor Terbaru
   const vendorTerbaru = kas.length > 0 ? kas[kas.length - 1].vendor : 0;
   //Jumlah Vendor
   const jumlahVendor = kas.length;
-  const percentageJumlahVendor =
-    (((kas.length - (kas.length - 1)) / kas.length) * 100).toFixed(2);
-  const barJumlahVendor = percentageJumlahVendor/100
+  const percentageJumlahVendor = (
+    ((kas.length - (kas.length - 1)) / kas.length) *
+    100
+  ).toFixed(2);
+  const barJumlahVendor = percentageJumlahVendor / 100;
   //Saldo Terkini
   const currentSaldo = kas.length > 0 ? kas[kas.length - 1].totalSaldo : 0;
 
@@ -66,7 +93,7 @@ const Dashboard = () => {
   const changeSign = change >= 0 ? "+" : "-";
   const percentageChange = ((change / currentSaldo) * 100).toFixed(2);
 
-  const barSaldoTerkini = percentageChange/100
+  const barSaldoTerkini = percentageChange / 100;
 
   //feature for Kontrak
   // Kontrak Terbaru
@@ -88,27 +115,33 @@ const Dashboard = () => {
   );
   const totalNilaiKontrak2 = kontrak
     .slice(0, -1)
-    .reduce((total, currentKontrak) => (total = total + currentKontrak.nilai_kontrak), 0);
+    .reduce(
+      (total, currentKontrak) => (total = total + currentKontrak.nilai_kontrak),
+      0
+    );
   const percentageNilaiKontrak = (
-    ((totalNilaiKontrak - totalNilaiKontrak2) / totalNilaiKontrak) *100).toFixed(2);
+    ((totalNilaiKontrak - totalNilaiKontrak2) / totalNilaiKontrak) *
+    100
+  ).toFixed(2);
 
   //total DPP
   const totalDpp = kontrak.reduce(
     (total, currentKontrak) => (total = total + currentKontrak.dpp),
     0
   );
-  const totalDpp2 = kontrak.slice(0, -1).reduce(
-    (total, currentKontrak) => (total = total + currentKontrak.dpp),0);
-  const percentageDpp = (
-    ((totalDpp - totalDpp2) / totalDpp) * 100).toFixed(2);
+  const totalDpp2 = kontrak
+    .slice(0, -1)
+    .reduce((total, currentKontrak) => (total = total + currentKontrak.dpp), 0);
+  const percentageDpp = (((totalDpp - totalDpp2) / totalDpp) * 100).toFixed(2);
 
   //total PPN
   const totalPpn = kontrak.reduce(
     (total, currentKontrak) => (total = total + currentKontrak.ppn),
     0
   );
-  const totalPpn2 = kontrak.slice(0, -1).reduce(
-    (total, currentKontrak) => (total = total + currentKontrak.ppn),0);
+  const totalPpn2 = kontrak
+    .slice(0, -1)
+    .reduce((total, currentKontrak) => (total = total + currentKontrak.ppn), 0);
   const percentagePpn = (((totalPpn - totalPpn2) / totalPpn) * 100).toFixed(2);
 
   //total PPH
@@ -128,9 +161,15 @@ const Dashboard = () => {
   );
   const totalNettoAkhir2 = kontrak
     .slice(0, -1)
-    .reduce((total, currentKontrak) => (total = total + currentKontrak.netto_akhir), 0);
-  const percentageNettoAkhir = (((totalNettoAkhir - totalNettoAkhir2) / totalNettoAkhir) * 100).toFixed(2);
-  
+    .reduce(
+      (total, currentKontrak) => (total = total + currentKontrak.netto_akhir),
+      0
+    );
+  const percentageNettoAkhir = (
+    ((totalNettoAkhir - totalNettoAkhir2) / totalNettoAkhir) *
+    100
+  ).toFixed(2);
+
   //total Modal
   const totalModal = kontrak.reduce(
     (total, currentKontrak) => (total = total + currentKontrak.modal),
@@ -174,10 +213,7 @@ const Dashboard = () => {
       (total, currentKontrak) => (total = total + currentKontrak.total_upp),
       0
     );
-  const percentageUpp = (
-    ((totalUpp - totalUpp2) / totalUpp) *
-    100
-  ).toFixed(2);
+  const percentageUpp = (((totalUpp - totalUpp2) / totalUpp) * 100).toFixed(2);
 
   //total LabaRugi
   const totalLabaRugi = kontrak.reduce(

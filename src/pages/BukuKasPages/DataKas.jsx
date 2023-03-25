@@ -2,7 +2,7 @@ import { Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar, GridCellParams } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
-import { useTheme } from "@mui/material";
+import { useTheme, CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
@@ -11,6 +11,7 @@ import { getKas, deleteKas } from "../../api/api";
 const DataKas = () => {
   //bridge to backend
   const [kas, setKas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); 
   useEffect(() => {
     fetchKas();
     // eslint-disable-next-line
@@ -18,8 +19,10 @@ const DataKas = () => {
 
   //get
   const fetchKas = async () => {
+    setIsLoading(true); // Set isLoading to true before fetching data
     const data = await getKas();
     setKas(data);
+    setIsLoading(false); // Set isLoading to false after fetching data
   };
 
   //delete
@@ -27,7 +30,6 @@ const DataKas = () => {
     await deleteKas(id);
     fetchKas();
   };
-
 
   //frontendd
   const theme = useTheme();
@@ -122,6 +124,21 @@ const DataKas = () => {
       ),
     },
   ];
+
+if (isLoading) {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "75vh",
+      }}
+    >
+      <CircularProgress color="secondary" size={64} />
+    </Box>
+  );
+}
 
   return (
     <Box m="20px">

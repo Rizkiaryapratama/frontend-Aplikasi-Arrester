@@ -2,7 +2,7 @@ import { Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
-import { useTheme } from "@mui/material";
+import { useTheme, CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getKontrak, deleteKontrak } from "../../api/api";
@@ -11,17 +11,18 @@ import Moment from "react-moment";
 const DataKontrak = () => {
   //bridge to backend
   const [kontrak, setKontrak] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); 
   useEffect(() => {
     fetchKontrak();
     // eslint-disable-next-line
   }, []);
 
-  //get
   const fetchKontrak = async () => {
+    setIsLoading(true); // Set isLoading to true before fetching data
     const data = await getKontrak();
     setKontrak(data);
+    setIsLoading(false); // Set isLoading to false after fetching data
   };
-
   //delete
   const handleDelete = async (id) => {
     await deleteKontrak(id);
@@ -166,6 +167,21 @@ const DataKontrak = () => {
       ),
     },
   ];
+
+  if (isLoading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "75vh",
+        }}
+      >
+        <CircularProgress color="secondary" size={64} />
+      </Box>
+    );
+  }
 
   return (
     <Box m="20px">
